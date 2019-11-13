@@ -1,0 +1,11 @@
+<?php 
+class component{
+	
+	
+	
+	
+}
+
+
+
+?>

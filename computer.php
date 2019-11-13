@@ -1,2 +1,11 @@
-Hello
-Bye
+<?php 
+class computer extends components{
+	
+	
+	
+	
+}
+
+
+
+?>
