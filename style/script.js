@@ -1,5 +1,6 @@
 function namechange(){
    var title =  document.getElementById("text");
-   title.innerHTML ?  "hi" : "hello";
+   const cells = table.getElementsByTagName('h1');
+   cells.innerHTML = "hi";
    
 }
