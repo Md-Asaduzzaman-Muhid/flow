@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home of Forms World</title>
+        <title>Login</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href= "style/style.css">
     </head>
@@ -28,7 +28,53 @@
                 </nav>
             </div>
         </header>
-        
+
+        <div class="container pt-5">
+            <form class="form-row" action="login.php" action="POST">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- <label for="name">Your Name</label> -->
+                        <input type="text" class="form-control" id="name" name= "name" aria-describedby="nameH" placeholder="Enter Name" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- <label for="email">Email address</label> -->
+                        <input type="email" class="form-control" id="email" name= "email" aria-describedby="emailH" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" name= "submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+        <?php 
+            $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
+
+            session_start();
+            if ( isset( $_POST['submit'] ) ) {
+                echo 'hello';
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $sql = "SELECT id FROM USER WHRE '$name' = name and '$email'= email ";
+                $result = mysqli_query($db,$sql);
+                alert("success");
+
+            }
+
+
+
+
+        ?>
+
         <script src="style/script.js"></script>
     </body>
 </html>
