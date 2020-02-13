@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home of Forms World</title>
+        <title>Users</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href= "style/style.css">
     </head>
@@ -31,7 +31,39 @@
                 </nav>
             </div>
         </header>
-        
+
+
+
+
+
+
+
+
+
+        <?php
+            $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
+            $sql = "SELECT * FROM user ";
+            if ($result = $mysqli->query($sql)) {
+                while ($row = $result->fetch_assoc()) {
+                    $field1name = $row["name"];
+                    $field2name = $row["email"];
+                    $field3name = $row["phone"];
+                    $field4name = $row["dob"];
+                    $field5name = $row["image"]; 
+             
+                    echo '<tr> 
+                              <td>'.$field1name.'</td> 
+                              <td>'.$field2name.'</td> 
+                              <td>'.$field3name.'</td> 
+                              <td>'.$field4name.'</td> 
+                              <td>'.$field5name.'</td> 
+                          </tr>';
+                }
+                $result->free();
+            }
+
+
+        ?>
         <script src="style/script.js"></script>
     </body>
 </html>

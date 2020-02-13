@@ -17,11 +17,14 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="signup.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="login.php">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="users.php">User List</a>
                             </li>
                         </ul>
                     </div>
@@ -30,7 +33,7 @@
         </header>
 
         <div class="container pt-5">
-            <form class="form-row" action="login.php" action="POST">
+            <form class="form-row" action="login.php" method="POST">
                 <div class="col-md-6">
                     <div class="form-group">
                         <!-- <label for="name">Your Name</label> -->
@@ -64,9 +67,25 @@
                 echo 'hello';
                 $name = $_POST['name'];
                 $email = $_POST['email'];
-                $sql = "SELECT id FROM USER WHRE '$name' = name and '$email'= email ";
-                $result = mysqli_query($db,$sql);
-                alert("success");
+                $sql = "SELECT id,name FROM user WHRE '$name' = name and '$email'= email ";
+                $result = $link->query($sql);
+                print_r($sql);
+
+                // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                // $active = $row['active'];
+                
+                // $count = mysqli_num_rows($result);
+                
+                // // If result matched $myusername and $mypassword, table row must be 1 row
+                    
+                // if($count == 1) {
+                //     session_register("name");
+                //     $_SESSION['login_user'] = $myusername;
+                    
+                //     header("location: welcome.php");
+                // }else {
+                //     $error = "Your Login Name or Password is invalid";
+                // }
 
             }
 
