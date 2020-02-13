@@ -31,39 +31,43 @@
                 </nav>
             </div>
         </header>
-
-
-
-
-
-
-
-
-
         <?php
             $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
             $sql = "SELECT * FROM user ";
-            if ($result = $mysqli->query($sql)) {
-                while ($row = $result->fetch_assoc()) {
-                    $field1name = $row["name"];
-                    $field2name = $row["email"];
-                    $field3name = $row["phone"];
-                    $field4name = $row["dob"];
-                    $field5name = $row["image"]; 
-             
-                    echo '<tr> 
-                              <td>'.$field1name.'</td> 
-                              <td>'.$field2name.'</td> 
-                              <td>'.$field3name.'</td> 
-                              <td>'.$field4name.'</td> 
-                              <td>'.$field5name.'</td> 
-                          </tr>';
-                }
-                $result->free();
-            }
-
-
         ?>
+        <div class="container">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Date of Birth</th>
+                    <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($result = $link->query($sql)): while($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <th><?php echo $row["name"]; ?></th>
+                        <th><?php echo $row["email"]; ?></th>
+                        <th><?php echo $row["phone"]; ?></th>
+                        <th><?php echo $row["dob"]; ?></th>
+                        <th> <img src="images/<?php echo $row["image"]; ?>" alt="image users" class="img-fluid" style= "width:60px"> </th>
+                    </tr>
+                    <?php endwhile; endif; ?>
+                </tbody>
+            </table>
+        </div>
+        
+
+
+
+        
+
+
+
+        
         <script src="style/script.js"></script>
     </body>
 </html>

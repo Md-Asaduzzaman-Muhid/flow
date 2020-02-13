@@ -17,7 +17,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a class="nav-link" href="signup.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
@@ -61,23 +61,23 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="date" name="dob" id="dob" id="dob">
+                            <input class="form-control" type="datetime-local" name="dob" id="dob" >
                             <small id="dobH" class="form-text text-muted">We'll never share your dob with anyone else.</small>
                         </div>
                     </div>
-                    <input type="file" name="image" id="image" >
-                    <!-- <div class="col-md-6">
+                    
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="phone" name= "phone" aria-describedby="phoneH" placeholder="Enter Phone">
-                            <small id="phoneH" class="form-text text-muted">We'll never share your contact with anyone else.</small>
+                            <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg,image/png">
+                            <small id="phoneH" class="form-text text-muted">We'll never share your image with anyone else.</small>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="date" name="dob" id="dob" id="dob">
-                            <small id="dobH" class="form-text text-muted">We'll never share your dob with anyone else.</small>
+                            <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" >
+                            <small id="passH" class="form-text text-muted">We'll never share your password with anyone else.</small>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="col-md-12 text-center">
                         <button type="submit" name= "submit" class="btn btn-primary">Sign in</button>
@@ -87,19 +87,24 @@
                 </form>
             </div>
         </div>
+        
 
         <?php
+             
+
             $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
             if ( isset( $_POST['submit'] ) ) {
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $dob = $_POST['dob'];
+                $passwordNotHashed = $_POST['password'];
+                $password = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
                 $image = $_FILES['image']['name'];
                 $target = "images/".basename($image);
                   
                 
-                $sql = "INSERT INTO user (name, email, phone ,dob ,image, updated_at ) VALUES ('$name', '$email','$phone', '$dob', '$image', 'NOW()' )";
+                $sql = "INSERT INTO user (name, email, phone ,dob ,image, password, updated_at ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password', 'NOW()' )";
                 if(mysqli_query($link, $sql)){
                     echo "Records added successfully.";
                     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {

@@ -47,6 +47,7 @@
                         <input type="email" class="form-control" id="email" name= "email" aria-describedby="emailH" placeholder="Enter email">
                     </div>
                 </div>
+                <p>Don't have an account? <a href="signup.php">Sign up now</a>.</p>
                 <div class="col-md-12 text-center">
                     <button type="submit" name= "submit" class="btn btn-primary">Sign in</button>
                 </div>
@@ -62,32 +63,19 @@
         <?php 
             $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
 
-            session_start();
-            if ( isset( $_POST['submit'] ) ) {
-                echo 'hello';
+            if ( isset( $_POST['submit'] )):
                 $name = $_POST['name'];
-                $email = $_POST['email'];
-                $sql = "SELECT id,name FROM user WHRE '$name' = name and '$email'= email ";
+                $name = $_POST['email'];
+                // $email = $_POST['email';
+                $sql = "SELECT * FROM user";
                 $result = $link->query($sql);
-                print_r($sql);
-
-                // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                // $active = $row['active'];
-                
-                // $count = mysqli_num_rows($result);
-                
-                // // If result matched $myusername and $mypassword, table row must be 1 row
+                while($row = $result->fetch_assoc()):
+                    if($row["name"] == $name){
+                        echo "name matched";
+                    }
                     
-                // if($count == 1) {
-                //     session_register("name");
-                //     $_SESSION['login_user'] = $myusername;
-                    
-                //     header("location: welcome.php");
-                // }else {
-                //     $error = "Your Login Name or Password is invalid";
-                // }
-
-            }
+                endwhile;
+            endif;
 
 
 
