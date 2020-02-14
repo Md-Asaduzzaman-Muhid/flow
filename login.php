@@ -21,7 +21,7 @@
                                 <a class="nav-link" href="signup.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.php">Login</a>
+                                <a class="nav-link active" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="users.php">User List</a>
@@ -44,7 +44,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <!-- <label for="email">Email address</label> -->
-                        <input type="email" class="form-control" id="email" name= "email" aria-describedby="emailH" placeholder="Enter email">
+                        <input type="password" class="form-control" id="password" name= "password" aria-describedby="passwordH" placeholder="Enter Password">
                     </div>
                 </div>
                 <p>Don't have an account? <a href="signup.php">Sign up now</a>.</p>
@@ -61,25 +61,51 @@
 
 
         <?php 
-            $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
+            
+            if (isset($_POST['submit'])):
 
-            if ( isset( $_POST['submit'] )):
-                $name = $_POST['name'];
-                $name = $_POST['email'];
-                // $email = $_POST['email';
-                $sql = "SELECT * FROM user";
-                $result = $link->query($sql);
-                while($row = $result->fetch_assoc()):
-                    if($row["name"] == $name){
-                        echo "name matched";
-                    }
+                echo "submited";
+                // grap form values
+                $username = $_POST['name'];
+                $password = trim($_POST['password']);
+            
+                
+            
+                // attempt login if no errors on form
+             
+                //$password = md5($password);
+                $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
+                $query = "SELECT * FROM user WHERE name='$username' ";
+                $results = mysqli_query($link, $query);
+                $row = mysqli_fetch_assoc($results);
+                if(password_verify($password,$row['password'])){
+                    echo " // You are a validated user. // ";
+                }
+                else{
+                    echo " // no // ";
+                }
                     
-                endwhile;
+                // if (mysqli_num_rows($results) > 0):
+                //     // check if user is admin or user
+                //     echo mysqli_num_rows($results);
+                //     $logged_in_user = mysqli_fetch_assoc($results);
+                //     echo "success";
+                //     // if ($logged_in_user['user_type'] == 'admin') {
+        
+                //     //     $_SESSION['user'] = $logged_in_user;
+                //     //     $_SESSION['success']  = "You are now logged in";
+                //     //     echo "success";	  
+                //     // }else{
+                //     //     $_SESSION['user'] = $logged_in_user;
+                //     //     $_SESSION['success'  = "You are now logged in";
+        
+                //     //     echo "not success";
+                //     // }
+                
+                // else:
+                //     echo ("Wrong username/password combination");
+                // endif;
             endif;
-
-
-
-
         ?>
 
         <script src="style/script.js"></script>

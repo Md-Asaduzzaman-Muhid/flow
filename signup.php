@@ -18,7 +18,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item ">
-                                <a class="nav-link" href="signup.php">Sign Up</a>
+                                <a class="nav-link active" href="signup.php">Sign Up</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="login.php">Login</a>
@@ -104,7 +104,7 @@
                 $target = "images/".basename($image);
                   
                 
-                $sql = "INSERT INTO user (name, email, phone ,dob ,image, password, updated_at ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password', 'NOW()' )";
+                $sql = "INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
                 if(mysqli_query($link, $sql)){
                     echo "Records added successfully.";
                     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {

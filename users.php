@@ -24,7 +24,7 @@
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">User List</a>
+                                <a class="nav-link active" href="users.php">User List</a>
                             </li>
                         </ul>
                     </div>
@@ -53,7 +53,7 @@
                         <th><?php echo $row["email"]; ?></th>
                         <th><?php echo $row["phone"]; ?></th>
                         <th><?php echo $row["dob"]; ?></th>
-                        <th> <img src="images/<?php echo $row["image"]; ?>" alt="image users" class="img-fluid" style= "width:60px"> </th>
+                        <th> <img src="images/<?php echo $row["image"]; ?>" alt="image users" class="img-fluid" style= "height:45px"> </th>
                     </tr>
                     <?php endwhile; endif; ?>
                 </tbody>
