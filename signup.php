@@ -37,18 +37,18 @@
         <h1 class="text-center py-5">Sign Up</h1>
         <div class="form-area">
             <div class="container">
-                <form class="form-row" method="POST" action="signup.php" enctype="multipart/form-data">
+                <form class="form-row" method="POST" action="common/dbconfig.php" enctype="multipart/form-data">
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" name= "name" aria-describedby="nameH" placeholder="Enter Name" required>
+                            <input type="text" class="form-control" id="name" name= "name" aria-describedby="nameH" placeholder="Enter Name" value= "<?php if(isset($name)){echo $name;} ?>" required>
                             <small id="nameH" class="form-text text-muted">We'll never share your name with anyone else.</small>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" name= "email" aria-describedby="emailH" placeholder="Enter email">
+                            <input type="email" class="form-control" id="email" name= "email" aria-describedby="emailH" placeholder="Enter email" required>
                             <small id="emailH" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </div>
@@ -68,19 +68,19 @@
                     
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg,image/png">
+                            <input type="file" name="image" id="image" accept="image/x-png,image/gif,image/jpeg,image/png" required>
                             <small id="phoneH" class="form-text text-muted">We'll never share your image with anyone else.</small>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" >
+                            <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" required>
                             <small id="passH" class="form-text text-muted">We'll never share your password with anyone else.</small>
                         </div>
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <button type="submit" name= "submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" name= "signup" class="btn btn-primary">Sign in</button>
                     </div>
                     
                 
@@ -88,36 +88,6 @@
             </div>
         </div>
         
-
-        <?php
-             
-
-            $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
-            if ( isset( $_POST['submit'] ) ) {
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $dob = $_POST['dob'];
-                $passwordNotHashed = $_POST['password'];
-                $password = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
-                $image = $_FILES['image']['name'];
-                $target = "images/".basename($image);
-                  
-                
-                $sql = "INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
-                if(mysqli_query($link, $sql)){
-                    echo "Records added successfully.";
-                    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                        echo "Image uploaded successfully";
-                    }else{
-                        echo "Failed to upload image";
-                    }
-                } else{
-                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                }
-            }
-            
-        ?>
 
 
         <script src="style/script.js"></script>

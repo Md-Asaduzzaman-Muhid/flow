@@ -31,7 +31,23 @@
                 </nav>
             </div>
         </header>
-        
+        <div class="container pt-5">
+            <h1>Home Page</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, ad.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quo nemo illum ipsa temporibus aliquam veritatis beatae corporis perspiciatis exercitationem!</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui facere culpa repudiandae.</p>
+        </div>
+        <?php
+        session_start();
+        echo "path:".session_save_path();
+        echo "ID:".session_id();
+        echo "name:".session_name();
+        if($_SESSION):
+            print_r($_SESSION);
+        endif;
+        session_destroy();
+        ?>
+
         <script src="style/script.js"></script>
     </body>
 </html>
