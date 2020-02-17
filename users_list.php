@@ -1,42 +1,19 @@
 <?php 
-    $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
-    $sql = "SELECT * FROM user ";
+    require_once 'common/user.php';
+    $objUser = new user();
+    $result =  $objUser->index();
+    $row1 = $result->fetch_assoc();
+    print_r($row1);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Users</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href= "style/style.css">
+        <?php require_once 'common/head.php'; ?>
     </head>
     <body>
-        <header class="header navbar-light bg-light">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.php">Home</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="signup.php">Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="users_list.php">User List</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <div class="container">
+        <?php require_once 'common/header.php'; ?>
+        <div class="container pb-5">
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -48,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($result = $link->query($sql)): while($row = $result->fetch_assoc()): ?>
+                    <?php while($row = $result->fetch_assoc()): ?>
                     <tr>
                         <th><?php echo $row["name"]; ?></th>
                         <th><?php echo $row["email"]; ?></th>
@@ -56,19 +33,11 @@
                         <th><?php echo $row["dob"]; ?></th>
                         <th> <img src="images/<?php echo $row["image"]; ?>" alt="image users" class="img-fluid" style= "height:45px"> </th>
                     </tr>
-                    <?php endwhile; endif; ?>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
-        
-
-
-
-        
-
-
-
-        
+        <?php require_once 'common/footer.php'; ?>
         <script src="style/script.js"></script>
     </body>
 </html>

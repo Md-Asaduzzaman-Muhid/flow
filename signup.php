@@ -1,7 +1,6 @@
 <?php
 require_once 'common/user.php';
 $objUser = new user();
-//print_r($objUser);
 if ( isset( $_POST['signup'] )) {
     $objUser->signup();
 }
@@ -9,39 +8,13 @@ if ( isset( $_POST['signup'] )) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Form Raw</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href= "style/style.css">
+        <?php require_once 'common/head.php'; ?>
     </head>
     <body>
-        <header class="header navbar-light bg-light">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.php">Home</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="signup.php">Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="users_list.php">User List</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+        <?php require_once 'common/header.php'; ?>
 
         <h1 class="text-center py-5">Sign Up</h1>
-        <div class="form-area">
+        <div class="form-area pb-5">
             <div class="container">
                 <form class="form-row" method="POST" action = "signup.php" enctype="multipart/form-data">
 
@@ -93,7 +66,7 @@ if ( isset( $_POST['signup'] )) {
                 </form>
             </div>
         </div>
-
+        <?php require_once 'common/footer.php'; ?>
         <script src="style/script.js"></script>
     </body>
 </html>

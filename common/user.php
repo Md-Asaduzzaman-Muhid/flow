@@ -2,13 +2,15 @@
 require_once 'dbconfig.php';
 class user{
     private $conn;
-
+    
     public function __construct(){
         $dbConfig = new dbConfig();
         $this->conn = $dbConfig->dbConnection();
     }
     public function index(){
+        $query = "SELECT * FROM user ";
 
+        return $result = $this->conn->query($query);
     }
     public function signup(){
         $name = $_POST['name'];
