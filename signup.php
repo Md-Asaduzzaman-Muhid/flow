@@ -1,3 +1,11 @@
+<?php
+require_once 'common/user.php';
+$objUser = new user();
+//print_r($objUser);
+if ( isset( $_POST['signup'] )) {
+    $objUser->signup();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +32,7 @@
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">User List</a>
+                                <a class="nav-link" href="users_list.php">User List</a>
                             </li>
                         </ul>
                     </div>
@@ -32,12 +40,10 @@
             </div>
         </header>
 
-
-
         <h1 class="text-center py-5">Sign Up</h1>
         <div class="form-area">
             <div class="container">
-                <form class="form-row" method="POST" action="common/dbconfig.php" enctype="multipart/form-data">
+                <form class="form-row" method="POST" action = "signup.php" enctype="multipart/form-data">
 
                     <div class="col-md-6">
                         <div class="form-group">
@@ -87,8 +93,6 @@
                 </form>
             </div>
         </div>
-        
-
 
         <script src="style/script.js"></script>
     </body>

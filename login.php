@@ -1,3 +1,12 @@
+<?php
+require_once 'common/user.php';
+$objUser = new user();
+//print_r($objUser);
+if ( isset( $_POST['sign-in'] )) {
+    $objUser->login();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +34,7 @@
                                 <a class="nav-link active" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">User List</a>
+                                <a class="nav-link" href="users_list.php">User List</a>
                             </li>
                             <?php if(!empty($_SESSION['username'])): ?>
                             <li class="nav-item">
@@ -39,7 +48,7 @@
         </header>
 
         <div class="container pt-5">
-            <form class="form-row" action="common/dbconfig.php" method="POST">
+            <form class="form-row" action ="login.php" method="POST">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Your Email</label>

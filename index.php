@@ -1,3 +1,22 @@
+<?php 
+        if(!isset($_COOKIE["atl_user_data"])){ 
+            setcookie("atl_user_data", "Atl User Data", time()+60 );
+            echo "Item is created " . $_COOKIE["atl_user_data"];  
+            
+        } else{ 
+            echo "Item is a  " . $_COOKIE["atl_user_data"]; 
+        } 
+
+        session_start();
+        echo "path: ".session_save_path();
+        echo "ID: ".session_id();
+        echo "name: ".session_name();
+        if($_SESSION):
+            print_r($_SESSION);
+        endif;
+        session_destroy();
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +43,7 @@
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="users.php">User List</a>
+                                <a class="nav-link" href="users_list.php">User List</a>
                             </li>
                         </ul>
                     </div>
@@ -37,16 +56,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quo nemo illum ipsa temporibus aliquam veritatis beatae corporis perspiciatis exercitationem!</p>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui facere culpa repudiandae.</p>
         </div>
-        <?php
-        session_start();
-        echo "path:".session_save_path();
-        echo "ID:".session_id();
-        echo "name:".session_name();
-        if($_SESSION):
-            print_r($_SESSION);
-        endif;
-        session_destroy();
-        ?>
+   
 
         <script src="style/script.js"></script>
     </body>

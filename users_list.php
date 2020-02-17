@@ -1,3 +1,8 @@
+<?php 
+    $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
+    $sql = "SELECT * FROM user ";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,17 +29,13 @@
                                 <a class="nav-link" href="login.php">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="users.php">User List</a>
+                                <a class="nav-link active" href="users_list.php">User List</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </header>
-        <?php
-            $link = mysqli_connect("127.0.0.1", "asad", "asad", "flow");
-            $sql = "SELECT * FROM user ";
-        ?>
         <div class="container">
             <table class="table table-hover">
                 <thead class="thead-dark">
