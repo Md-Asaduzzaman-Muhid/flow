@@ -8,13 +8,13 @@ if ( isset( $_POST['signup'] )) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php require_once 'common/head.php'; ?>
+        <?php require_once 'includes/head.php'; ?>
     </head>
     <body>
-        <?php require_once 'common/header.php'; ?>
+        <?php require_once 'includes/header.php'; ?>
 
         <h1 class="text-center py-5">Sign Up</h1>
-        <div class="form-area pb-5">
+        <div class="form-area py-5">
             <div class="container">
                 <form class="form-row" method="POST" action = "signup.php" enctype="multipart/form-data">
 
@@ -40,7 +40,7 @@ if ( isset( $_POST['signup'] )) {
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="datetime-local" name="dob" id="dob" >
+                            <input class="form-control" type="date" name="dob" id="dob" >
                             <small id="dobH" class="form-text text-muted">We'll never share your dob with anyone else.</small>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ if ( isset( $_POST['signup'] )) {
                 </form>
             </div>
         </div>
-        <?php require_once 'common/footer.php'; ?>
+        <?php require_once 'includes/footer.php'; ?>
         <script src="style/script.js"></script>
     </body>
 </html>

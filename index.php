@@ -2,11 +2,10 @@
         if(!isset($_COOKIE["atl_user_data"])){ 
             setcookie("atl_user_data", "Atl User Data", time()+60 );
            // echo "Item is created " . $_COOKIE["atl_user_data"];  
-            
         } else{ 
             echo "Item is a  " . $_COOKIE["atl_user_data"]; 
         } 
-
+        
         // session_start();
         // echo "path: ".session_save_path();
         // echo "ID: ".session_id();
@@ -20,18 +19,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php require_once 'common/head.php'; ?>
+        <?php require_once 'includes/head.php'; ?>
     </head>
     <body>
-        <?php require_once 'common/header.php'; ?>
-        <div class="container pt-5">
+        <?php require_once 'includes/header.php'; ?>
+        <div class="container py-5">
             <h1>Home Page</h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, ad.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quo nemo illum ipsa temporibus aliquam veritatis beatae corporis perspiciatis exercitationem!</p>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui facere culpa repudiandae.</p>
         </div>
    
-        <?php require_once 'common/footer.php'; ?>
+        <?php require_once 'includes/footer.php'; ?>
         <script src="style/script.js"></script>
     </body>
 </html>
