@@ -8,6 +8,8 @@
     }
     //echo $id;
     if ( isset( $_POST['signup'] )) {
+        $objUser->validate();
+        exit;
         $objUser->signup($_POST['id']);
     }  
 ?>
@@ -18,11 +20,11 @@
     </head>
     <body>
         <?php require_once 'includes/header.php'; ?>
-        <h1 class="text-center py-5">Sign Up</h1>
+        <h1 class="text-center py-5"><?php if(isset($_GET['id'])){echo 'Edit Account';}else{ echo 'Sign Up';} ?></h1>
         <div class="form-area py-5">
             <div class="container">
-                <?php if(isset($error)): ?> <p><?php echo $error; ?></p><?php endif; ?>
-                <form class="form-row" method="POST" action = "signup.php" enctype="multipart/form-data">
+                <span><?php if (isset($nameError)) echo $nameError ?></span>
+                <form class="form-row" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name = 'id' value = "<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" >
                     <div class="col-md-6">
                         <div class="form-group">
@@ -65,7 +67,7 @@
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <button type="submit" name= "signup" class="btn btn-primary">Save</button>
+                        <button type="submit" name= "signup" class="btn btn-primary"><?php if(isset($_GET['id'])){echo 'Update';}else{ echo 'Sign Up';} ?></button>
                     </div>
                 </form>
             </div>

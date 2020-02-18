@@ -1,3 +1,35 @@
+// function validator(){
+   
+//    let name;
+//    name = getElementById('name').value;
+//    if(name.length < 7){
+//       document.getElementById("error").innerHTML = 'erro text';
+//    }
+//    else{
+//       document.getElementById("error").innerHTML = 'ok';
+//    }
+// }
+// document.getElementById('signup').onclick{
+//    alert('signup done');
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function namechange(){
    var title =  document.getElementById("text");
    const cells = table.getElementsByTagName('h1');

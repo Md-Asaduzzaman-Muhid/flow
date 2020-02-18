@@ -11,13 +11,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $home; ?>signup.php">Sign Up</a>
+                        <a class="nav-link" href="<?php echo $home; ?>signup">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $home; ?>login.php">Login</a>
+                        <a class="nav-link" href="<?php echo $home; ?>login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $home; ?>users_list.php">User List</a>
+                        <a class="nav-link" href="<?php echo $home; ?>users_list">All User</a>
                     </li>
                 </ul>
             </div>

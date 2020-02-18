@@ -11,7 +11,6 @@ class user{
 
     public function index(){
         $query = "SELECT * FROM user ";
-        
         return $result = $this->conn->query($query);
     }
 
@@ -26,8 +25,12 @@ class user{
         $password = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
         $image = $_FILES['image']['name'];
         $target = "images/".basename($image);
-       // echo $id;
+        $error ='';
         if(isset( $_POST['signup'] ) && (empty($id))):
+            // if(strlen($name) < 7){
+            //     $nameError ='Must name';
+            //     exit;
+            // }
             $queryInsert = " INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
             try{
                 mysqli_query($this->conn, $queryInsert);
@@ -78,7 +81,7 @@ class user{
         }catch(exception $ex){
             echo " // oh no  ... you are not valid// $ex";
         }
-        session_destroy();
+       // session_destroy();
     }
 
 
@@ -101,6 +104,10 @@ class user{
         }
         
     }
+
+
+
+    
     
 }
 
