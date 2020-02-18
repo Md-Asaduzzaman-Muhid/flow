@@ -40,7 +40,7 @@
                         <th><?php echo $row["phone"]; ?></th>
                         <th><?php echo $row["dob"]; ?></th>
                         <th> <img src="images/<?php echo $row["image"]; ?>" alt="image users" class="img-fluid" style= "height:45px"> </th>
-                        <th><a href="edit_user.php?id=<?php echo $row["id"]; ?>">Edit</a> <a href="users_list.php?delete=<?php echo $row["id"]; ?>" class="text-danger">Delete</a> </th>
+                        <th><a href="signup.php?id=<?php echo $row["id"]; ?>">Edit</a> <a href="users_list.php?delete=<?php echo $row["id"]; ?>" class="text-danger">Delete</a> </th>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>

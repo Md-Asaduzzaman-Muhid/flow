@@ -21,7 +21,7 @@
             <form class="form-row" method="POST" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name= "name" aria-describedby="nameH" placeholder="Enter Name" value= "<?php if(isset($row['name'])){echo $row['name'];} ?>" required>
+                        <input type="text" class="form-control" id="name" name= "name" aria-describedby="nameH" placeholder="Enter Name" value= "<?php if(isset($row['name'])){echo $row['name'];}else{$row['name'] = '';} ?>" required>
                         <small id="nameH" class="form-text text-muted">We'll never share your name with anyone else.</small>
                     </div>
                 </div>

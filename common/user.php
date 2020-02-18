@@ -7,11 +7,17 @@ class user{
         $dbConfig = new dbConfig();
         $this->conn = $dbConfig->dbConnection();
     }
+
+
     public function index(){
         $query = "SELECT * FROM user ";
+        
         return $result = $this->conn->query($query);
     }
-    public function signup(){
+
+
+    public function signup($id){
+        $name= $email = $phone= $dob = $password = $image = '';
         $name = $_POST['name'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
@@ -20,20 +26,43 @@ class user{
         $password = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
         $image = $_FILES['image']['name'];
         $target = "images/".basename($image);
-        $query = " INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
-        try{
-            mysqli_query($this->conn, $query);
-            echo "Records added successfully.";
+       // echo $id;
+        if(isset( $_POST['signup'] ) && (empty($id))):
+            $queryInsert = " INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
             try{
-                move_uploaded_file($_FILES['image']['tmp_name'], $target);
-                echo "Image uploaded successfully";
-            }catch(exception $ex){
-                echo "Failed to upload image  $ex";
+                mysqli_query($this->conn, $queryInsert);
+                echo "Records added successfully.";
+                try{
+                    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                    echo "Image uploaded successfully";
+                }catch(exception $ex){
+                    echo "Failed to upload image  $ex";
+                }
+            } catch(exception $ex){
+                echo "ERROR: Could not able to execute $ex ";
             }
-        } catch(exception $ex){
-            echo "ERROR: Could not able to execute $ex ";
-        }
+        elseif(isset( $_POST['signup'] ) && !(empty($id))):
+            $query = "SELECT * FROM user WHERE id ='$id' ";
+            $results = mysqli_query($this->conn, $query);
+            $row = mysqli_fetch_assoc($results);
+            $queryUpdate = " UPDATE user SET name = '$name', email = '$email', phone= '$phone' ,dob= '$dob' ,image = '$image', password= '$password' WHERE id= '$id' ";
+            try{
+                mysqli_query($this->conn, $queryUpdate);
+                try{
+                    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                    echo "Image uploaded successfully";
+                }catch(exception $ex){
+                    echo "Failed to upload image";
+                }
+                //header("Refresh:0");
+            } catch(exception $ex){
+                echo "ERROR: Could not able to execute $ex";
+            }
+            return $row;
+        endif; 
     }
+
+
     public function login(){
         echo "submited";
         session_start();
@@ -51,35 +80,16 @@ class user{
         }
         session_destroy();
     }
-    public function update($id){
+
+
+    public function user($id){
         $query = "SELECT * FROM user WHERE id='$id' ";
         $results = mysqli_query($this->conn, $query);
         $row = mysqli_fetch_assoc($results);
-        if ( isset( $_POST['update'] )) {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $dob = $_POST['dob'];
-            $passwordNotHashed = $_POST['password'];
-            $password = password_hash($passwordNotHashed, PASSWORD_DEFAULT);
-            $image = $_FILES['image']['name'];
-            $target = "images/".basename($image);
-            $query1 = " UPDATE user SET name = '$name', email = '$email', phone= '$phone' ,dob= '$dob' ,image = '$image', password= '$password' WHERE id= '$id' ";
-            try{
-                mysqli_query($this->conn, $query1);
-                try{
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target);
-                    echo "Image uploaded successfully";
-                }catch(exception $ex){
-                    echo "Failed to upload image";
-                }
-                header("Refresh:0");
-            } catch(exception $ex){
-                echo "ERROR: Could not able to execute $ex";
-            } 
-        }
         return $row;
     }
+
+
     public function delete($id){
         $query = "DELETE FROM user WHERE id='$id' ";
         try{
