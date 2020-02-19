@@ -1,22 +1,21 @@
 <?php 
-class dbConfig{
-    private $DB_HOST = '127.0.0.1';
-    private $USER_NAME = 'asad';
-    private $USER_PASSWORD = 'asad';
-    private $DB_NAME = 'flow'; 
-    public $conn;
-    public function dbConnection(){
+    class dbConfig{
+        private $DB_HOST = '127.0.0.1';
+        private $USER_NAME = 'asad';
+        private $USER_PASSWORD = 'asad';
+        private $DB_NAME = 'flow'; 
+        public $conn;
+        public function dbConnection(){
         $this->conn = null;
-       // echo "connection";
-        try{
-            $this->conn = mysqli_connect($this->DB_HOST, $this->USER_NAME, $this->USER_PASSWORD, $this->DB_NAME);
-           // echo "get in config";
-        }  catch (exception $ex){
-            echo "connection error".$ex;
+            try{
+                $this->conn = mysqli_connect($this->DB_HOST, $this->USER_NAME, $this->USER_PASSWORD, $this->DB_NAME);
+            // echo "get in config";
+            }  catch (exception $ex){
+                echo "connection error".$ex;
+            }
+            return $this->conn;
         }
-        return $this->conn;
     }
-}
 ?>
 
 

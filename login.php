@@ -6,14 +6,7 @@
         $objUser->login();
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?php require_once 'includes/head.php'; ?>
-    </head>
-    <body>
-        <?php require_once 'includes/header.php'; ?>
+    <?php require_once 'includes/header.php'; ?>
         <div class="container py-5">
             <form class="form-row" action ="login.php" method="POST">
                 <div class="col-md-6">

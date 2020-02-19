@@ -1,28 +1,4 @@
-<?php 
-        // if(!isset($_COOKIE["atl_user_data"])){ 
-        //     setcookie("atl_user_data", "Atl User Data", time()+60 );
-        //    // echo "Item is created " . $_COOKIE["atl_user_data"];  
-        // } else{ 
-        //     echo "Item is a  " . $_COOKIE["atl_user_data"]; 
-        // } 
-        
-        // session_start();
-        // echo "path: ".session_save_path();
-        // echo "ID: ".session_id();
-        // echo "name: ".session_name();
-        // if($_SESSION):
-        //     print_r($_SESSION);
-        // endif;
-        // session_destroy();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?php require_once 'includes/head.php'; ?>
-    </head>
-    <body>
-        <?php require_once 'includes/header.php'; ?>
+<?php require_once 'includes/header.php'; ?>
         <div class="container py-5">
             <h1>Home Page</h1>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, ad.</p>

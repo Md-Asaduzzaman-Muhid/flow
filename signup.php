@@ -11,13 +11,7 @@
         $objUser->signup($_POST['id']);
     }  
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?php require_once 'includes/head.php'; ?>
-    </head>
-    <body>
-        <?php require_once 'includes/header.php'; ?>
+    <?php require_once 'includes/header.php'; ?>
         <h1 class="text-center py-5"><?php if(isset($_GET['id'])){echo 'Edit Account';}else{ echo 'Sign Up';} ?></h1>
         <div class="form-area py-5">
             <div class="container">
@@ -107,7 +101,6 @@
                 });
             }, false);
             })();
-
         </script>
     </body>
 </html>
