@@ -27,20 +27,12 @@ class user{
         $target = "images/".basename($image);
         $error ='';
         if(isset( $_POST['signup'] ) && (empty($id))):
-            // if(strlen($name) < 7){
-            //     $nameError ='Must name';
-            //     exit;
-            // }
             $queryInsert = " INSERT INTO user (name, email, phone ,dob ,image, password ) VALUES ('$name', '$email','$phone', '$dob', '$image', '$password' )";
             try{
                 mysqli_query($this->conn, $queryInsert);
                 echo "Records added successfully.";
-                try{
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target);
-                    echo "Image uploaded successfully";
-                }catch(exception $ex){
-                    echo "Failed to upload image  $ex";
-                }
+                move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                echo "Image uploaded successfully";
             } catch(exception $ex){
                 echo "ERROR: Could not able to execute $ex ";
             }
@@ -51,13 +43,8 @@ class user{
             $queryUpdate = " UPDATE user SET name = '$name', email = '$email', phone= '$phone' ,dob= '$dob' ,image = '$image', password= '$password' WHERE id= '$id' ";
             try{
                 mysqli_query($this->conn, $queryUpdate);
-                try{
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target);
-                    echo "Image uploaded successfully";
-                }catch(exception $ex){
-                    echo "Failed to upload image";
-                }
-                //header("Refresh:0");
+                move_uploaded_file($_FILES['image']['tmp_name'], $target);
+                echo "Image uploaded successfully";
             } catch(exception $ex){
                 echo "ERROR: Could not able to execute $ex";
             }
