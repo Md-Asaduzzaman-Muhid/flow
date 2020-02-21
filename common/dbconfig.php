@@ -1,8 +1,8 @@
 <?php 
     class dbConfig{
         private $DB_HOST = '127.0.0.1';
-        private $USER_NAME = 'asad';
-        private $USER_PASSWORD = 'asad';
+        private $USER_NAME = 'root';
+        private $USER_PASSWORD = '';
         private $DB_NAME = 'flow'; 
         public $conn;
         public function dbConnection(){

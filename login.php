@@ -1,7 +1,6 @@
 <?php
     require_once 'common/user.php';
     $objUser = new user();
-    //print_r($objUser);
     if ( isset( $_POST['sign-in'] )) {
         $objUser->login();
     }
