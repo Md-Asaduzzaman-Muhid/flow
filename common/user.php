@@ -14,7 +14,6 @@ class user{
         return $result = $this->conn->query($query);
     }
 
-
     public function signup($id){
         $name= $email = $phone= $dob = $password = $image = '';
         $name = $_POST['name'];
@@ -51,7 +50,6 @@ class user{
             return $row;
         endif; 
     }
-
 
     public function login(){
         echo "submited";
@@ -91,6 +89,8 @@ class user{
         }
         
     }
+
+    
 }
 
 
